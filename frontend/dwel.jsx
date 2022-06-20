@@ -9,6 +9,7 @@ import { fetchListings, fetchListing } from './util/listing_api_util';
 import { addSearch, removeSearch, fetchSearch, fetchSearches, updateSearch } from './util/search_api_util';
 import "regenerator-runtime/runtime";
 
+console.log("GIVE IT ANOTHER SHOT");
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
 
