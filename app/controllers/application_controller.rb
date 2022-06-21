@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+    # helper Webpacker::Helper
     helper_method :logged_in?, :current_user
 
     def current_user
@@ -18,4 +19,5 @@ class ApplicationController < ActionController::Base
       current_user.reset_session_token!
       session[:session_token] = nil
     end
+
 end

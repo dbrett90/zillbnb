@@ -10,5 +10,6 @@ const Root = ({ store }) => (
     </HashRouter>
   </Provider>
 );
+console.log("THIS IS A TEST FROM ROOT.JSX");
 
 export default Root;

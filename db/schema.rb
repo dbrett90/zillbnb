@@ -36,6 +36,13 @@ ActiveRecord::Schema.define(version: 2021_06_15_180533) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "like", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "listing_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "likes", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "listing_id", null: false

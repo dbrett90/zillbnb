@@ -1,0 +1,406 @@
+  [1m[35m (5117.8ms)[0m  [1m[35mCREATE DATABASE "dwel_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (5088.7ms)[0m  [1m[35mCREATE DATABASE "dwel_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (5046.5ms)[0m  [1m[35mCREATE DATABASE "dwel_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (742.0ms)[0m  [1m[35mCREATE DATABASE "dwel_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (411.6ms)[0m  [1m[35mCREATE DATABASE "dwel_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (20.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (8.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7893611962189895445)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUsers (20210510173744)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (11.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210510173744_create_users.rb:3
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE  INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  ↳ db/migrate/20210510173744_create_users.rb:10
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210510173744"]]
+  ↳ bin/rails:9
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateActiveStorageTables (20210511223348)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210511223348_create_active_storage_tables.active_storage.rb:4
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  ↳ db/migrate/20210511223348_create_active_storage_tables.active_storage.rb:4
+  [1m[35m (9.3ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  ↳ db/migrate/20210511223348_create_active_storage_tables.active_storage.rb:16
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  ↳ db/migrate/20210511223348_create_active_storage_tables.active_storage.rb:16
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  ↳ db/migrate/20210511223348_create_active_storage_tables.active_storage.rb:16
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210511223348"]]
+  ↳ bin/rails:9
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateListings (20210514060538)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE TABLE "listings" ("id" bigserial primary key, "street_address" character varying NOT NULL, "city" character varying NOT NULL, "state" character varying NOT NULL, "postal_code" integer NOT NULL, "description" character varying NOT NULL, "status" character varying NOT NULL, "price" character varying NOT NULL, "type" character varying NOT NULL, "sq_ft" integer NOT NULL, "lot_size" integer, "year_built" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210514060538_create_listings.rb:3
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE  INDEX  "index_listings_on_id" ON "listings"  ("id")[0m
+  ↳ db/migrate/20210514060538_create_listings.rb:19
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210514060538"]]
+  ↳ bin/rails:9
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to AddLatColListings (20210514130303)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "listings" ADD "longitude" float[0m
+  ↳ db/migrate/20210514130303_add_lat_col_listings.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "listings" ADD "latitude" float[0m
+  ↳ db/migrate/20210514130303_add_lat_col_listings.rb:4
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210514130303"]]
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to RenameTypeColListings (20210514132437)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "listings" RENAME COLUMN "type" TO "listing_type"[0m
+  ↳ db/migrate/20210514132437_rename_type_col_listings.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210514132437"]]
+  ↳ bin/rails:9
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to ChangePriceColListings (20210514155759)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (11.4ms)[0m  [1m[35mALTER TABLE "listings" ALTER COLUMN "price" TYPE integer USING price::integer[0m
+  ↳ db/migrate/20210514155759_change_price_col_listings.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210514155759"]]
+  ↳ bin/rails:9
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to ChangeDescriptionColListings (20210514160925)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "listings" ALTER COLUMN "description" TYPE text[0m
+  ↳ db/migrate/20210514160925_change_description_col_listings.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210514160925"]]
+  ↳ bin/rails:9
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to ChangeLotColListings (20210514162541)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (9.9ms)[0m  [1m[35mALTER TABLE "listings" ALTER COLUMN "lot_size" TYPE float[0m
+  ↳ db/migrate/20210514162541_change_lot_col_listings.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210514162541"]]
+  ↳ bin/rails:9
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to AddBedColListings (20210514172510)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "listings" ADD "beds" integer[0m
+  ↳ db/migrate/20210514172510_add_bed_col_listings.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "listings" ADD "baths" integer[0m
+  ↳ db/migrate/20210514172510_add_bed_col_listings.rb:4
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210514172510"]]
+  ↳ bin/rails:9
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateLikeTable (20210519032445)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "like" ("id" bigserial primary key, "user_id" integer NOT NULL, "listing_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210519032445_create_like_table.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210519032445"]]
+  ↳ bin/rails:9
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateLike (20210519032938)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "likes" ("id" bigserial primary key, "user_id" integer NOT NULL, "listing_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20210519032938_create_like.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210519032938"]]
+  ↳ bin/rails:9
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to AddIndexLikes (20210519221617)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_likes_on_user_id_and_listing_id" ON "likes"  ("user_id", "listing_id")[0m
+  ↳ db/migrate/20210519221617_add_index_likes.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210519221617"]]
+  ↳ bin/rails:9
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreateSavedSearchesTable (20210608122634)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (6.3ms)[0m  [1m[35mCREATE TABLE "saved_searches" ("id" bigserial primary key, "user_id" integer NOT NULL, "max_price" integer, "max_sqft" integer, "min_baths" integer, "min_beds" integer, "min_price" integer, "query" character varying)[0m
+  ↳ db/migrate/20210608122634_create_saved_searches_table.rb:3
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE  INDEX  "index_saved_searches_on_user_id" ON "saved_searches"  ("user_id")[0m
+  ↳ db/migrate/20210608122634_create_saved_searches_table.rb:13
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210608122634"]]
+  ↳ bin/rails:9
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to RenameSavedSearches (20210608124706)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "saved_searches" RENAME TO "search_records"[0m
+  ↳ db/migrate/20210608124706_rename_saved_searches.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mALTER INDEX "saved_searches_pkey" RENAME TO "search_records_pkey"[0m
+  ↳ db/migrate/20210608124706_rename_saved_searches.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "public"."saved_searches_id_seq" RENAME TO "search_records_id_seq"[0m
+  ↳ db/migrate/20210608124706_rename_saved_searches.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mALTER INDEX "index_saved_searches_on_user_id" RENAME TO "index_search_records_on_user_id"[0m
+  ↳ db/migrate/20210608124706_rename_saved_searches.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210608124706"]]
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to ChangeSearchRecords (20210608145031)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "search_records" ALTER COLUMN "user_id" TYPE integer, ALTER COLUMN "user_id" DROP NOT NULL[0m
+  ↳ db/migrate/20210608145031_change_search_records.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210608145031"]]
+  ↳ bin/rails:9
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to AddColumnSearchRecords (20210615180533)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "search_records" ADD "title" character varying[0m
+  ↳ db/migrate/20210615180533_add_column_search_records.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210615180533"]]
+  ↳ bin/rails:9
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-06-21 14:36:11.088757"], ["updated_at", "2022-06-21 14:36:11.088757"]]
+  ↳ bin/rails:9
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(7893611962189895445)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/" for ::1 at 2022-06-21 10:36:33 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/daniel/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (5.8ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 1098ms (Views: 1091.1ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/" for ::1 at 2022-06-21 10:37:53 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 90ms (Views: 87.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for ::1 at 2022-06-21 10:51:25 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 500 Internal Server Error in 410ms (ActiveRecord: 0.5ms)
+
+
+
+NoMethodError - undefined method `javascript_pack_tag' for #<#<Class:0x00007ffa912a3b20>:0x00007ffa93641a78>
+Did you mean?  javascript_path
+               javascript_tag:
+  app/views/layouts/application.html.erb:28:in `_app_views_layouts_application_html_erb__158503858073613348_70357095877520'
+
+Started POST "/__better_errors/5aefb116c50dd361/variables" for ::1 at 2022-06-21 10:51:27 -0400
+Started GET "/" for ::1 at 2022-06-21 10:51:40 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (4.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 500 Internal Server Error in 66ms (ActiveRecord: 4.8ms)
+
+
+
+Sprockets::Rails::Helper::AssetNotFound - The asset "root.js" is not present in the asset pipeline.:
+  app/views/layouts/application.html.erb:28:in `_app_views_layouts_application_html_erb__158503858073613348_70357096065760'
+
+Started POST "/__better_errors/d416784c8daa2ffc/variables" for ::1 at 2022-06-21 10:51:40 -0400
+Started GET "/" for ::1 at 2022-06-21 11:05:00 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 500 Internal Server Error in 70ms (ActiveRecord: 1.0ms)
+
+
+
+Sprockets::Rails::Helper::AssetNotFound - The asset "root.js" is not present in the asset pipeline.:
+  app/views/layouts/application.html.erb:28:in `_app_views_layouts_application_html_erb__158503858073613348_70357085795480'
+
+Started POST "/__better_errors/70e493803d71df75/variables" for ::1 at 2022-06-21 11:05:01 -0400
+Started GET "/" for ::1 at 2022-06-21 11:05:11 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 200 OK in 54ms (Views: 52.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2022-06-21 11:06:55 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 500 Internal Server Error in 383ms (ActiveRecord: 0.5ms)
+
+
+
+NoMethodError - undefined method `javascript_pack_tag' for #<#<Class:0x00007ffa912a3b20>:0x00005654091757d8>
+Did you mean?  javascript_path
+               javascript_tag:
+  app/views/layouts/application.html.erb:28:in `_app_views_layouts_application_html_erb__158503858073613348_47459465065300'
+
+Started POST "/__better_errors/f5b5181e424c42c3/variables" for ::1 at 2022-06-21 11:06:56 -0400
+Started GET "/" for ::1 at 2022-06-21 11:11:12 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 500 Internal Server Error in 446ms (ActiveRecord: 0.3ms)
+
+
+
+NoMethodError - undefined method `javascript_pack_tag' for #<#<Class:0x00007ffa912a3b20>:0x00007ffa8416fe50>
+Did you mean?  javascript_path
+               javascript_tag:
+  app/views/layouts/application.html.erb:28:in `_app_views_layouts_application_html_erb__158503858073613348_70356967318960'
+
+Started POST "/__better_errors/471f86e4f52b9597/variables" for ::1 at 2022-06-21 11:11:13 -0400
+Started GET "/" for ::1 at 2022-06-21 11:11:37 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5
+Completed 500 Internal Server Error in 451ms (ActiveRecord: 0.5ms)
+
+
+
+NoMethodError - undefined method `javascript_pack_tag' for #<#<Class:0x00007ffa912a3b20>:0x00007ffa93707728>
+Did you mean?  javascript_path
+               javascript_tag:
+  app/views/layouts/application.html.erb:28:in `_app_views_layouts_application_html_erb__158503858073613348_70357096071080'
+
+Started POST "/__better_errors/e668fda2c6c59b48/variables" for ::1 at 2022-06-21 11:11:39 -0400
+Started GET "/" for ::1 at 2022-06-21 11:13:32 -0400
+
+ActionController::RoutingError - uninitialized constant ApplicationController::Webpacker:
+
+Started POST "/__better_errors/171345ce7cee032d/variables" for ::1 at 2022-06-21 11:13:32 -0400
+Started GET "/" for ::1 at 2022-06-21 11:13:34 -0400
+
+ActionController::RoutingError - uninitialized constant ApplicationController::Webpacker:
+
+Started POST "/__better_errors/9f933f71e2a8727e/variables" for ::1 at 2022-06-21 11:13:34 -0400
+Started GET "/" for ::1 at 2022-06-21 11:18:51 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 500 Internal Server Error in 330ms (ActiveRecord: 5.6ms)
+
+
+
+NoMethodError - undefined method `javascript_pack_tag' for #<#<Class:0x00007ffa930f4a98>:0x00007ffa930eb0d8>
+Did you mean?  javascript_path
+               javascript_tag:
+  app/views/layouts/application.html.erb:28:in `_app_views_layouts_application_html_erb__158503858073613348_70357092843220'
+
+Started POST "/__better_errors/7482c39fea795e55/variables" for ::1 at 2022-06-21 11:18:51 -0400
+Started GET "/" for ::1 at 2022-06-21 11:26:57 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 200 OK in 55ms (Views: 50.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for ::1 at 2022-06-21 11:27:05 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 200 OK in 55ms (Views: 53.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2022-06-21 11:31:35 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 200 OK in 74ms (Views: 72.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for ::1 at 2022-06-21 13:49:29 -0400
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/daniel/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.8ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 200 OK in 1043ms (Views: 1001.3ms | ActiveRecord: 39.5ms)
+
+
+Started GET "/" for ::1 at 2022-06-21 13:49:32 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 200 OK in 57ms (Views: 56.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2022-06-21 14:05:54 -0400
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/daniel/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (2.1ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 200 OK in 1937ms (Views: 1930.4ms | ActiveRecord: 4.3ms)
+
+
